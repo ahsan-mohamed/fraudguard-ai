@@ -1,0 +1,13 @@
+# Environment
+.env
+
+# Data (too large for GitHub)
+data/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Models (optional - can be large)
+*.pkl
