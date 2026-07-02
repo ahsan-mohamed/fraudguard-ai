@@ -10,4 +10,4 @@ __pycache__/
 venv/
 
 # Models (optional - can be large)
-*.pkl
+*.pkl.DS_Store
