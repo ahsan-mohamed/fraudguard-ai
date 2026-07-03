@@ -15,7 +15,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=[
+    "http://localhost:5173",
+    "https://fraudguard-ai-lovat.vercel.app"
+])
 
 # ── Load Model Artifacts ───────────────────────────────────
 model         = joblib.load(os.path.join(BASE_DIR, 'models', 'xgboost_fraud_model.pkl'))
