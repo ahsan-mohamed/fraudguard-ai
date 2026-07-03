@@ -16,6 +16,9 @@ CORS(app)
 
 # ── Load Model Artifacts ───────────────────────────────────
 model         = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/xgboost_fraud_model.pkl')
+print("✅ Model loaded from:", '/Users/ahsanmohamed/fraud-detection-explainer/models/xgboost_fraud_model.pkl')
+print("✅ Model n_estimators:", model.n_estimators)
+print("✅ Model classes:", model.classes_)
 feature_names = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/feature_names.pkl')
 scaler_amount = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/scaler_amount.pkl')
 scaler_time   = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/scaler_time.pkl')
