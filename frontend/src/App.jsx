@@ -5,8 +5,7 @@ import { ShieldAlert, ShieldCheck, Loader2, Search, SendHorizonal, Activity, Ale
 import Login from './Login';
 import Navbar from './Navbar';
 
-const API_URL = 'http://127.0.0.1:5000';
-
+const API_URL = 'https://fraudguard-ai-backend-rqus.onrender.com';
 const defaultForm = {
   amount: '', time: '',
   ...Object.fromEntries(Array.from({ length: 28 }, (_, i) => [`V${i + 1}`, '']))
