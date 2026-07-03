@@ -9,19 +9,22 @@ from groq import Groq
 from dotenv import load_dotenv
 import os
 
-load_dotenv('/Users/ahsanmohamed/fraud-detection-explainer/.env')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 app = Flask(__name__)
 CORS(app)
 
 # ── Load Model Artifacts ───────────────────────────────────
-model         = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/xgboost_fraud_model.pkl')
-print("✅ Model loaded from:", '/Users/ahsanmohamed/fraud-detection-explainer/models/xgboost_fraud_model.pkl')
+model         = joblib.load(os.path.join(BASE_DIR, 'models', 'xgboost_fraud_model.pkl'))
+print("✅ Model loaded from:", os.path.join(BASE_DIR, 'models', 'xgboost_fraud_model.pkl'))
 print("✅ Model n_estimators:", model.n_estimators)
 print("✅ Model classes:", model.classes_)
-feature_names = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/feature_names.pkl')
-scaler_amount = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/scaler_amount.pkl')
-scaler_time   = joblib.load('/Users/ahsanmohamed/fraud-detection-explainer/models/scaler_time.pkl')
+feature_names = joblib.load(os.path.join(BASE_DIR, 'models', 'feature_names.pkl'))
+scaler_amount = joblib.load(os.path.join(BASE_DIR, 'models', 'scaler_amount.pkl'))
+scaler_time   = joblib.load(os.path.join(BASE_DIR, 'models', 'scaler_time.pkl'))
 
 print("✅ Feature names:", feature_names)
 print("✅ Feature count:", len(feature_names))
@@ -119,7 +122,7 @@ def predict():
 @app.route('/predict/sample', methods=['GET'])
 def predict_sample():
     try:
-        df = pd.read_csv('/Users/ahsanmohamed/fraud-detection-explainer/data/creditcard.csv')
+        df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'creditcard.csv'))
 
         fraud_row  = df[df['Class'] == 1].iloc[0]
         normal_row = df[df['Class'] == 0].iloc[0]
